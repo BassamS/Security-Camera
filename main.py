@@ -9,7 +9,7 @@ face_cascade = cv2.CascadeClassifier(
 body_cascade = cv2.CascadeClassifier(
     cv2.data.haarcascades + "haarcascade_fullbody.xml")
 
-detection = True
+detection = False
 detection_stopped_time = None
 timer_started = False
 SECONDS_TO_RECORD_AFTER_DETECTION = 5
@@ -45,7 +45,8 @@ while True:
             timer_started = True
             detection_stopped_time = time.time()
 
-    out.write(frame)
+    if detection:
+        out.write(frame)
 
     # for (x, y, width, height) in faces:
     #     cv2.rectangle(frame, (x, y), (x + width, y + height), (255, 0, 0), 3)
